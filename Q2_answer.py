@@ -2,14 +2,17 @@
     # 재귀 할때마다 cnt += 1
     # 재귀 중 원래의 값과 같은 값이 나오면 return
         # 단, 사이클이 1 이상일 경우
-    # x // 10 -> x의 앞 숫자, x % 10 -> 뒷 숫자
+    # x // 10 -> x의 앞 숫자, x % 10 -> x의 뒷 숫자
 
 def find_cycle(origin, now, cnt):
     if cnt > 0:
         if origin == now:
             return cnt
 
+    # 가지고 있는 숫자의 앞, 뒤 숫자 합
     temp = now // 10 + now % 10
+    
+    # 새로이 만들어질 다음 숫자
     nxt = 10 * (now % 10) + temp % 10
     
     return find_cycle(origin, nxt, cnt + 1)
